@@ -11,18 +11,22 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.freshmarket.R;
 import com.example.freshmarket.databinding.ItemOnboardingBinding;
+import com.example.freshmarket.interfaces.OnBoardingListener;
 import com.example.freshmarket.model.OnBoardingItem;
 
 import java.util.List;
 
 public class OnBoadringAdapter extends PagerAdapter {
 
-    private List<OnBoardingItem> onBoardingItems;
     private Context context;
+    private List<OnBoardingItem> onBoardingItems;
+    private OnBoardingListener listener;
 
-    public OnBoadringAdapter(List<OnBoardingItem> onBoardingItems, Context context) {
-        this.onBoardingItems = onBoardingItems;
+    public OnBoadringAdapter(Context context, List<OnBoardingItem> onBoardingItems,
+                             OnBoardingListener listener) {
         this.context = context;
+        this.onBoardingItems = onBoardingItems;
+        this.listener = listener;
     }
 
     @Override
@@ -41,6 +45,13 @@ public class OnBoadringAdapter extends PagerAdapter {
 
         itemOnboardingBinding.itemImage.setImageDrawable(context.getResources()
                 .getDrawable(onBoardingItems.get(position).getItemImage()));
+
+        if (position == onBoardingItems.size() - 1)
+            itemOnboardingBinding.finishTv.setVisibility(View.VISIBLE);
+
+        itemOnboardingBinding.finishTv.setOnClickListener(view -> {
+            listener.onFinishClicked();
+        });
 
         container.addView(itemOnboardingBinding.getRoot());
         return itemOnboardingBinding.getRoot();

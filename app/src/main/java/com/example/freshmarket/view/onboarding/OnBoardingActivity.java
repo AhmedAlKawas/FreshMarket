@@ -1,5 +1,6 @@
 package com.example.freshmarket.view.onboarding;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import com.example.freshmarket.R;
 import com.example.freshmarket.adapter.OnBoadringAdapter;
 import com.example.freshmarket.databinding.ActivityOnBoardingBinding;
 import com.example.freshmarket.model.OnBoardingItem;
+import com.example.freshmarket.view.home_page.HomepageActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +30,10 @@ public class OnBoardingActivity extends AppCompatActivity {
 
     private void setViewPagerAdapter() {
         createItemsList();
-        OnBoadringAdapter adapter = new OnBoadringAdapter(onBoardingItems, this);
+        OnBoadringAdapter adapter = new OnBoadringAdapter(this, onBoardingItems, () -> {
+            startActivity(new Intent(OnBoardingActivity.this, HomepageActivity.class));
+            finish();
+        });
         onBoardingBinding.viewpagerOnboarding.setAdapter(adapter);
         onBoardingBinding.circleIndicatorOnboarding.setViewPager(onBoardingBinding.viewpagerOnboarding);
     }
