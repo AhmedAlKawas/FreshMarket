@@ -17,8 +17,8 @@ import java.util.List;
 
 public class OnBoardingActivity extends AppCompatActivity {
 
-    protected List<OnBoardingItem> onBoardingItems;
-    protected ActivityOnBoardingBinding onBoardingBinding;
+    private List<OnBoardingItem> onBoardingItems;
+    private ActivityOnBoardingBinding onBoardingBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
