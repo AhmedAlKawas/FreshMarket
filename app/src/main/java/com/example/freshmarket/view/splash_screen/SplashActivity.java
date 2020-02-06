@@ -9,15 +9,20 @@ import androidx.databinding.DataBindingUtil;
 
 import com.example.freshmarket.R;
 import com.example.freshmarket.databinding.ActivitySplashBinding;
+import com.example.freshmarket.utils.PrefManager;
+import com.example.freshmarket.view.home_page.HomepageActivity;
 import com.example.freshmarket.view.onboarding.OnBoardingActivity;
 
 public class SplashActivity extends AppCompatActivity {
+
+    private PrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivitySplashBinding splashBinding = DataBindingUtil.setContentView(this,
                 R.layout.activity_splash);
+        prefManager = new PrefManager(this);
         splashScreen();
     }
 
@@ -25,7 +30,10 @@ public class SplashActivity extends AppCompatActivity {
         Handler handler = new Handler();
         Runnable r = new Runnable() {
             public void run() {
-                goToOnBoarding();
+                if (prefManager.Is_First_LAUNCH())
+                    goToOnBoarding();
+                else
+                    goToHomePage();
             }
         };
         handler.postDelayed(r, 2000);
@@ -33,6 +41,11 @@ public class SplashActivity extends AppCompatActivity {
 
     private void goToOnBoarding() {
         startActivity(new Intent(SplashActivity.this, OnBoardingActivity.class));
+        finish();
+    }
+
+    private void goToHomePage() {
+        startActivity(new Intent(SplashActivity.this, HomepageActivity.class));
         finish();
     }
 

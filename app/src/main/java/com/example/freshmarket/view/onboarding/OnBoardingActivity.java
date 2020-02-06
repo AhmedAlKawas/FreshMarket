@@ -10,6 +10,7 @@ import com.example.freshmarket.R;
 import com.example.freshmarket.adapter.OnBoadringAdapter;
 import com.example.freshmarket.databinding.ActivityOnBoardingBinding;
 import com.example.freshmarket.model.OnBoardingItem;
+import com.example.freshmarket.utils.PrefManager;
 import com.example.freshmarket.view.home_page.HomepageActivity;
 
 import java.util.ArrayList;
@@ -19,18 +20,23 @@ public class OnBoardingActivity extends AppCompatActivity {
 
     private List<OnBoardingItem> onBoardingItems;
     private ActivityOnBoardingBinding onBoardingBinding;
+    private PrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         onBoardingBinding = DataBindingUtil.setContentView(this,
                 R.layout.activity_on_boarding);
+        prefManager = new PrefManager(this);
         setViewPagerAdapter();
     }
 
     private void setViewPagerAdapter() {
         createItemsList();
         OnBoadringAdapter adapter = new OnBoadringAdapter(this, onBoardingItems, () -> {
+//            Stop on boarding activity from being viewed
+            prefManager.stop_First_LAUNCH();
+
             startActivity(new Intent(OnBoardingActivity.this, HomepageActivity.class));
             finish();
         });
