@@ -11,8 +11,12 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.freshmarket.R;
+import com.example.freshmarket.adapter.CategoriesAdapter;
 import com.example.freshmarket.databinding.ActivityHomepageBinding;
+import com.example.freshmarket.network.model.response.Category;
 import com.example.freshmarket.view_model.CategoriesViewModel;
+
+import java.util.List;
 
 public class HomepageActivity extends AppCompatActivity {
 
@@ -35,10 +39,20 @@ public class HomepageActivity extends AppCompatActivity {
         categoriesViewModel = ViewModelProviders.of(this).get(CategoriesViewModel.class);
         categoriesViewModel.returnCategoriesList().observe(this, categoriesList -> {
             if (null != categoriesList) {
-                Log.e("response", "initListeners: success");
+
+                setCategoriesAdapter(categoriesList);
+
             } else
                 Log.e("response", "initListeners: failed");
         });
+    }
+
+    private void setCategoriesAdapter(List<Category> categoriesList) {
+        CategoriesAdapter categoriesAdapter = new CategoriesAdapter(this, categoriesList,
+                category -> {
+
+                });
+        homeBinding.appbarLayout.contentLayout.categoriesRv.setAdapter(categoriesAdapter);
     }
 
     private void initView() {

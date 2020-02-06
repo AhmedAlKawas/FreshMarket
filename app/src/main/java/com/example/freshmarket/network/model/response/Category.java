@@ -1,5 +1,10 @@
 package com.example.freshmarket.network.model.response;
 
+import android.widget.ImageView;
+
+import androidx.databinding.BindingAdapter;
+
+import com.bumptech.glide.Glide;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -50,6 +55,13 @@ public class Category {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    @BindingAdapter("android:loadImg")
+    public static void loadImage(ImageView imageView, String imageUrl) {
+
+        Glide.with(imageView.getContext()).load(imageUrl).centerCrop().into(imageView);
+
     }
 
 }
