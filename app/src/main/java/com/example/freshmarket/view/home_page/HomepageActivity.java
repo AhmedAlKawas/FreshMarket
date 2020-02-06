@@ -1,27 +1,44 @@
 package com.example.freshmarket.view.home_page;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.example.freshmarket.R;
 import com.example.freshmarket.databinding.ActivityHomepageBinding;
+import com.example.freshmarket.view_model.CategoriesViewModel;
 
 public class HomepageActivity extends AppCompatActivity {
 
-    ActivityHomepageBinding homeBinding;
+    private ActivityHomepageBinding homeBinding;
+    private CategoriesViewModel categoriesViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         homeBinding = DataBindingUtil.setContentView(this, R.layout.activity_homepage);
 
+        initListeners();
         initView();
 
+        categoriesViewModel.getCategories();
+
+    }
+
+    private void initListeners() {
+        categoriesViewModel = ViewModelProviders.of(this).get(CategoriesViewModel.class);
+        categoriesViewModel.returnCategoriesList().observe(this, categoriesList -> {
+            if (null != categoriesList) {
+                Log.e("response", "initListeners: success");
+            } else
+                Log.e("response", "initListeners: failed");
+        });
     }
 
     private void initView() {
