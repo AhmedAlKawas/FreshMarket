@@ -12,4 +12,5 @@
     <string name="cart">cart</string>
     <string name="categoryimage">categoryImage</string>
     <string name="opacity">Opacity</string>
+    <string name="categoty">category</string>
 </resources>

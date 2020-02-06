@@ -1,5 +1,6 @@
 package com.example.freshmarket.view.home_page;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -14,8 +15,10 @@ import com.example.freshmarket.R;
 import com.example.freshmarket.adapter.CategoriesAdapter;
 import com.example.freshmarket.databinding.ActivityHomepageBinding;
 import com.example.freshmarket.network.model.response.Category;
+import com.example.freshmarket.view.category.CategoryDetailsActivity;
 import com.example.freshmarket.view_model.CategoriesViewModel;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class HomepageActivity extends AppCompatActivity {
@@ -47,19 +50,22 @@ public class HomepageActivity extends AppCompatActivity {
         });
     }
 
-    private void setCategoriesAdapter(List<Category> categoriesList) {
-        CategoriesAdapter categoriesAdapter = new CategoriesAdapter(this, categoriesList,
-                category -> {
-
-                });
-        homeBinding.appbarLayout.contentLayout.categoriesRv.setAdapter(categoriesAdapter);
-    }
-
     private void initView() {
         setSupportActionBar(homeBinding.appbarLayout.toolbar);
         assert (null != getSupportActionBar());
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         setUpNavDrawer();
+    }
+
+    private void setCategoriesAdapter(List<Category> categoriesList) {
+        CategoriesAdapter categoriesAdapter = new CategoriesAdapter(this, categoriesList,
+                category -> {
+                    Intent intent = new Intent(HomepageActivity.this,
+                            CategoryDetailsActivity.class);
+                    intent.putExtra(getString(R.string.categoty), (Serializable) category);
+                    startActivity(intent);
+                });
+        homeBinding.appbarLayout.contentLayout.categoriesRv.setAdapter(categoriesAdapter);
     }
 
     private void setUpNavDrawer() {
