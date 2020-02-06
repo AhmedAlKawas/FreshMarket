@@ -43,9 +43,6 @@ public class OnBoadringAdapter extends PagerAdapter {
 
         itemOnboardingBinding.setOnboardingItem(onBoardingItems.get(position));
 
-        itemOnboardingBinding.itemImage.setImageDrawable(context.getResources()
-                .getDrawable(onBoardingItems.get(position).getItemImage()));
-
         if (position == onBoardingItems.size() - 1)
             itemOnboardingBinding.finishTv.setVisibility(View.VISIBLE);
 

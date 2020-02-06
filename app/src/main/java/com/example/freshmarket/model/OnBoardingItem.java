@@ -1,5 +1,9 @@
 package com.example.freshmarket.model;
 
+import android.widget.ImageView;
+
+import androidx.databinding.BindingAdapter;
+
 public class OnBoardingItem {
 
     private String title;
@@ -35,4 +39,12 @@ public class OnBoardingItem {
     public void setItemImage(int itemImage) {
         this.itemImage = itemImage;
     }
+
+    @BindingAdapter("android:loadImg")
+    public static void loadImage(ImageView imageView, int imageResource) {
+
+        imageView.setImageDrawable(imageView.getContext().getResources().getDrawable(imageResource));
+
+    }
+
 }

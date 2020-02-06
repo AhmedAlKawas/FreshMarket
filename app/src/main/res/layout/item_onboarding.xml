@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_150sdp"
             android:scaleType="centerCrop"
+            android:loadImg="@{onboardingItem.itemImage}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.25"
