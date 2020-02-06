@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="productItem"
+            type="com.example.freshmarket.network.model.response.Product" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/product_item_cl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_180sdp"
+        android:layout_margin="@dimen/_4sdp">
+
+        <TextView
+            android:id="@+id/price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{productItem.price}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/_8sdp"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/weight_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{productItem.weight}"
+            app:layout_constraintBottom_toTopOf="@id/price_tv"
+            app:layout_constraintStart_toStartOf="@id/price_tv"
+            android:layout_marginBottom="@dimen/_4sdp"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{productItem.name}"
+            app:layout_constraintBottom_toTopOf="@id/weight_tv"
+            app:layout_constraintStart_toStartOf="@id/price_tv"
+            android:layout_marginBottom="@dimen/_4sdp"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+
+        <ImageView
+            android:id="@+id/product_image_iv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/name_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            android:contentDescription="@string/proguctimage"
+            android:loadImg="@{productItem.productImg}"
+            android:layout_margin="@dimen/_8sdp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

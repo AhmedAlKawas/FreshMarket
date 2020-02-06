@@ -13,4 +13,5 @@
     <string name="categoryimage">categoryImage</string>
     <string name="opacity">Opacity</string>
     <string name="categoty">category</string>
+    <string name="proguctimage">proguctImage</string>
 </resources>
