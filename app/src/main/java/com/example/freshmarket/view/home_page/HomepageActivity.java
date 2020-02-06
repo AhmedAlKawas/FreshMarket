@@ -1,16 +1,65 @@
 package com.example.freshmarket.view.home_page;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.example.freshmarket.R;
+import com.example.freshmarket.databinding.ActivityHomepageBinding;
 
 public class HomepageActivity extends AppCompatActivity {
+
+    ActivityHomepageBinding homeBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_homepage);
+        homeBinding = DataBindingUtil.setContentView(this, R.layout.activity_homepage);
+
+        initView();
+
+    }
+
+    private void initView() {
+        setSupportActionBar(homeBinding.appbarLayout.toolbar);
+        assert (null != getSupportActionBar());
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        setUpNavDrawer();
+    }
+
+    private void setUpNavDrawer() {
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,
+                homeBinding.drawerLayout, homeBinding.appbarLayout.toolbar, R.string.openDrawer,
+                R.string.closeDrawer) {
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                // Code here will be triggered once the drawer closes as we don't want anything to happen so we leave this blank
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                // Code here will be triggered once the drawer open as we don't want anything to happen so we leave this blank
+                super.onDrawerOpened(drawerView);
+            }
+        };
+
+        //Setting the actionbarToggle to drawer layout
+        homeBinding.drawerLayout.addDrawerListener(actionBarDrawerToggle);
+
+        //calling sync state is necessary or else your hamburger icon wont show up
+        actionBarDrawerToggle.syncState();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        return true;
     }
 }

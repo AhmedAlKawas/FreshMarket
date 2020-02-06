@@ -6,4 +6,8 @@
     <string name="finish">finish</string>
     <string name="image">image</string>
     <string name="lorem_title">Lorem Ipsum</string>
+    <string name="openDrawer">open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
+    <string name="search">Search</string>
+    <string name="cart">cart</string>
 </resources>
