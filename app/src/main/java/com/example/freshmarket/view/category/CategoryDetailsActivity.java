@@ -1,10 +1,12 @@
 package com.example.freshmarket.view.category;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.freshmarket.R;
 import com.example.freshmarket.adapter.ProductsAdapter;
@@ -30,6 +32,8 @@ public class CategoryDetailsActivity extends AppCompatActivity {
         setSupportActionBar(categoryDetailsBinding.toolbar);
         assert (null != category.getName() && null != getSupportActionBar());
         getSupportActionBar().setTitle(category.getName());
+//        Show back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void setProductsAdapter(){
@@ -49,4 +53,12 @@ public class CategoryDetailsActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        Action bar button clicked
+        if (item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
