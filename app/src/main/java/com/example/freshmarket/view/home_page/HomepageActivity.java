@@ -13,18 +13,21 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.freshmarket.R;
 import com.example.freshmarket.adapter.CategoriesAdapter;
+import com.example.freshmarket.adapter.SliderAdapter;
 import com.example.freshmarket.databinding.ActivityHomepageBinding;
 import com.example.freshmarket.network.model.response.Category;
 import com.example.freshmarket.view.category.CategoryDetailsActivity;
 import com.example.freshmarket.view_model.CategoriesViewModel;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomepageActivity extends AppCompatActivity {
 
     private ActivityHomepageBinding homeBinding;
     private CategoriesViewModel categoriesViewModel;
+    private List<Integer> imagesResources;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,7 @@ public class HomepageActivity extends AppCompatActivity {
         assert (null != getSupportActionBar());
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         setUpNavDrawer();
+        setSliderAdapter();
     }
 
     private void setCategoriesAdapter(List<Category> categoriesList) {
@@ -91,6 +95,21 @@ public class HomepageActivity extends AppCompatActivity {
 
         //calling sync state is necessary or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
+    }
+
+    private void setSliderAdapter(){
+
+        imagesResources = new ArrayList<>();
+        imagesResources.add(R.drawable.slider1);
+        imagesResources.add(R.drawable.slider1);
+        imagesResources.add(R.drawable.slider1);
+        imagesResources.add(R.drawable.slider1);
+        imagesResources.add(R.drawable.slider1);
+
+        SliderAdapter adapter = new SliderAdapter(HomepageActivity.this, imagesResources);
+        homeBinding.appbarLayout.contentLayout.sliderVp.setAdapter(adapter);
+        homeBinding.appbarLayout.contentLayout.sliderIndicatorCi
+                .setViewPager(homeBinding.appbarLayout.contentLayout.sliderVp);
     }
 
     @Override

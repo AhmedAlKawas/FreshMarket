@@ -9,13 +9,36 @@
         android:layout_height="match_parent"
         android:background="@color/grey_background">
 
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/slider_vp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/_8sdp"/>
+
+        <me.relex.circleindicator.CircleIndicator
+            android:id="@+id/slider_indicator_ci"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            app:ci_drawable="@drawable/selected_pot"
+            app:ci_drawable_unselected="@drawable/unselected_pot"
+            app:ci_height="10dp"
+            app:ci_width="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/slider_vp"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/categories_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             tools:listitem="@layout/item_category"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"/>
+            app:spanCount="2"
+            app:layout_constraintTop_toBottomOf="@id/slider_vp"
+            android:paddingTop="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

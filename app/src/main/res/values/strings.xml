@@ -15,4 +15,5 @@
     <string name="categoty">category</string>
     <string name="proguctimage">proguctImage</string>
     <string name="product">product</string>
+    <string name="sliderimage">sliderImage</string>
 </resources>
