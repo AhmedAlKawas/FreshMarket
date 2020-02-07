@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +13,7 @@ import com.example.freshmarket.R;
 import com.example.freshmarket.adapter.ProductsAdapter;
 import com.example.freshmarket.databinding.ActivityCategoryDetailsBinding;
 import com.example.freshmarket.network.model.response.Category;
+import com.example.freshmarket.view.product.ProductDetailsActivity;
 
 public class CategoryDetailsActivity extends AppCompatActivity {
 
@@ -40,7 +42,10 @@ public class CategoryDetailsActivity extends AppCompatActivity {
     private void setProductsAdapter(){
 
         ProductsAdapter adapter = new ProductsAdapter(this, category.getProducts(), product -> {
-
+            Intent intent = new Intent(CategoryDetailsActivity.this,
+                    ProductDetailsActivity.class);
+            intent.putExtra(getResources().getString(R.string.product), product);
+            startActivity(intent);
         });
 
         categoryDetailsBinding.productsRv.setAdapter(adapter);

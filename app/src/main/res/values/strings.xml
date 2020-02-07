@@ -14,4 +14,5 @@
     <string name="opacity">Opacity</string>
     <string name="categoty">category</string>
     <string name="proguctimage">proguctImage</string>
+    <string name="product">product</string>
 </resources>
