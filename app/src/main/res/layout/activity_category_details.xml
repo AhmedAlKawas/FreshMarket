@@ -10,6 +10,10 @@
         android:background="@color/grey_background"
         android:fitsSystemWindows="true">
 
+        <include
+            android:id="@+id/appbar"
+            layout="@layout/app_bar_category_details"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/products_rv"
             android:layout_width="match_parent"
@@ -18,21 +22,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appbar"
             app:spanCount="2"
-            tools:listitem="@layout/item_product" />
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?actionBarSize"
-                android:background="@color/grey_background" />
-
-        </com.google.android.material.appbar.AppBarLayout>
+            tools:listitem="@layout/item_product"
+            android:background="@color/darker_grey"
+            android:paddingTop="@dimen/_8sdp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

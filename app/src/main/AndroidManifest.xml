@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.category.CategoryDetailsActivity"></activity>
+        <activity android:name=".view.category.CategoryDetailsActivity"
+            android:theme="@style/DarkToolbarTheme"/>
         <activity android:name=".view.home_page.HomepageActivity" />
         <activity android:name=".view.onboarding.OnBoardingActivity" />
         <activity android:name=".view.splash_screen.SplashActivity">

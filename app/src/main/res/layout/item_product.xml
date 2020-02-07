@@ -12,7 +12,8 @@
         android:id="@+id/product_item_cl"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_180sdp"
-        android:layout_margin="@dimen/_4sdp">
+        android:layout_margin="@dimen/_4sdp"
+        android:background="@color/grey_background">
 
         <TextView
             android:id="@+id/price_tv"

@@ -29,9 +29,10 @@ public class CategoryDetailsActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        setSupportActionBar(categoryDetailsBinding.toolbar);
+        setSupportActionBar(categoryDetailsBinding.appbar.toolbar);
         assert (null != category.getName() && null != getSupportActionBar());
         getSupportActionBar().setTitle(category.getName());
+        categoryDetailsBinding.appbar.setCategoryItem(category);
 //        Show back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -49,7 +50,7 @@ public class CategoryDetailsActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        getMenuInflater().inflate(R.menu.menu_toolbar_white, menu);
         return true;
     }
 
