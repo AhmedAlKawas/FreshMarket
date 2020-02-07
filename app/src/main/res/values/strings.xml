@@ -16,4 +16,6 @@
     <string name="proguctimage">proguctImage</string>
     <string name="product">product</string>
     <string name="sliderimage">sliderImage</string>
+    <string name="cart_cap">Cart</string>
+    <string name="favourites">Favourites</string>
 </resources>
