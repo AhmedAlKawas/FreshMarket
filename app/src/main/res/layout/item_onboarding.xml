@@ -2,13 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-
-        <variable
-            name="onboardingItem"
-            type="com.example.freshmarket.model.OnBoardingItem" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,12 +11,12 @@
             android:id="@+id/item_image"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_150sdp"
-            android:scaleType="centerCrop"
+            android:contentDescription="@string/image"
             android:loadImg="@{onboardingItem.itemImage}"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.25"
-            android:contentDescription="@string/image" />
+            app:layout_constraintVertical_bias="0.25" />
 
         <TextView
             android:id="@+id/title_tv"
@@ -31,9 +24,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_16sdp"
             android:text="@{onboardingItem.title}"
+            android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="21sp"
-            android:textAlignment="center"
             app:layout_constraintTop_toBottomOf="@id/item_image" />
 
         <TextView
@@ -42,23 +35,30 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_16sdp"
             android:text="@{onboardingItem.description}"
+            android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:textAlignment="center"
             app:layout_constraintTop_toBottomOf="@id/title_tv" />
 
         <TextView
             android:id="@+id/finish_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_8sdp"
+            android:padding="@dimen/_12sdp"
             android:text="@string/finish"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="21sp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="gone"/>
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <variable
+            name="onboardingItem"
+            type="com.example.freshmarket.model.OnBoardingItem" />
+    </data>
 
 </layout>
