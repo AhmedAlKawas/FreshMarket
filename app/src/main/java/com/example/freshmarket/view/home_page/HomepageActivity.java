@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,10 +47,16 @@ public class HomepageActivity extends AppCompatActivity {
         categoriesViewModel.returnCategoriesList().observe(this, categoriesList -> {
             if (null != categoriesList) {
 
+                homeBinding.appbarLayout.contentLayout.sliderIndicatorCi.setVisibility(View.VISIBLE);
+                homeBinding.appbarLayout.contentLayout.sliderVp.setVisibility(View.VISIBLE);
+                homeBinding.appbarLayout.contentLayout.progressbar.setVisibility(View.GONE);
                 setCategoriesAdapter(categoriesList);
 
-            } else
-                Log.e("response", "initListeners: failed");
+            } else{
+                homeBinding.appbarLayout.contentLayout.progressbar.setVisibility(View.GONE);
+                Toast.makeText(this, getString(R.string.try_again), Toast.LENGTH_SHORT)
+                        .show();
+            }
         });
     }
 
